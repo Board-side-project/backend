@@ -4,6 +4,9 @@ spring:
     url: jdbc:mariadb://180.67.117.226:3306/yjboard
     username: feeleat
     password: root
+  devtools:
+    restart:
+      enabled: false
 
   # secret key
   jwt:
@@ -11,7 +14,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
     properties:
       hibernate:
         show_sql: true
