@@ -7,12 +7,7 @@ import com.yunha.boardproject.common.dto.ResponseDTO;
 import com.yunha.boardproject.common.response.Tool;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/board")
@@ -44,5 +39,46 @@ public class BoardController {
         return tool.res("성공", boardList);
 
     }
+
+
+    /**
+     * 게시글 등록 메소드
+     * @return
+     */
+    @PostMapping("/write")
+    public ResponseEntity<ResponseDTO> writeBoard(){
+
+
+        return tool.res("등록 완료", null);
+
+    }
+
+
+    /**
+     * 게시글 수정
+     * @return
+     */
+    @PutMapping("/write")
+    public ResponseEntity<ResponseDTO> modifyBoard(){
+
+
+
+        return tool.res("수정 완료", null);
+
+    }
+
+
+    /**
+     * 게시글 삭제
+     * @return
+     */
+    @DeleteMapping("/write")
+    public ResponseEntity<ResponseDTO> removeBoard(){
+
+
+        return tool.res("삭제 완료", null);
+
+    }
+
 
 }
