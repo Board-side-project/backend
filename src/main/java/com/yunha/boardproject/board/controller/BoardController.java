@@ -61,6 +61,7 @@ public class BoardController {
     @PutMapping("/write")
     public ResponseEntity<ResponseDTO> modifyBoard(){
 
+        // 게시글code 받기
 
 
         return tool.res("수정 완료", null);
