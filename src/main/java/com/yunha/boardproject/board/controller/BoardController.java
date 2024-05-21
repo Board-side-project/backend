@@ -45,7 +45,7 @@ public class BoardController {
      * 게시글 등록 메소드
      * @return
      */
-    @PostMapping("/write")
+    @PostMapping("/post")
     public ResponseEntity<ResponseDTO> writeBoard(){
 
 
@@ -58,7 +58,7 @@ public class BoardController {
      * 게시글 수정
      * @return
      */
-    @PutMapping("/write")
+    @PutMapping("/post")
     public ResponseEntity<ResponseDTO> modifyBoard(){
 
         // 게시글code 받기
@@ -73,7 +73,7 @@ public class BoardController {
      * 게시글 삭제
      * @return
      */
-    @DeleteMapping("/write")
+    @DeleteMapping("/post")
     public ResponseEntity<ResponseDTO> removeBoard(){
 
 
