@@ -1,6 +1,6 @@
 package com.yunha.boardproject.board.service;
 
-import com.yunha.boardproject.board.entity.Board;
+import com.yunha.boardproject.board.entity.Post;
 import com.yunha.boardproject.board.repository.BoardRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,12 +16,12 @@ public class BoardService {
         this.boardRepository = boardRepository;
     }
 
-    public Page<Board> showBoardList(int page) {
+    public Page<Post> showBoardList(int page) {
 
         Pageable pageable = PageRequest.of(page, 10);
         System.out.println("서비스 정상");
 
-        Page<Board> boardList = boardRepository.findAll(pageable);
+        Page<Post> boardList = boardRepository.findAll(pageable);
 
         return boardList;
 

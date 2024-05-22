@@ -1,7 +1,7 @@
 package com.yunha.boardproject.board.controller;
 
 
-import com.yunha.boardproject.board.entity.Board;
+import com.yunha.boardproject.board.entity.Post;
 import com.yunha.boardproject.board.service.BoardService;
 import com.yunha.boardproject.common.dto.ResponseDTO;
 import com.yunha.boardproject.common.response.Tool;
@@ -29,14 +29,14 @@ public class BoardController {
      * 게시글 리스트 조회 메소드
      * @return
      */
-    @GetMapping("/boardList")
+    @GetMapping("/posts")
     public ResponseEntity<ResponseDTO> showBoardList(@RequestParam int page) {
 
-        Page<Board> boardList = boardService.showBoardList(page);
+        Page<Post> boardList = boardService.showBoardList(page);
 
         System.out.println("컨트롤러 성공");
-        System.out.println("게시글 리스트: " + boardList);
-        return tool.res("성공", boardList);
+        System.out.println("게시글 리스트 조회: " + boardList);
+        return tool.res("조회 성공", boardList);
 
     }
 
@@ -45,8 +45,10 @@ public class BoardController {
      * 게시글 등록 메소드
      * @return
      */
-    @PostMapping("/post")
-    public ResponseEntity<ResponseDTO> writeBoard(){
+    @PostMapping("/posts")
+    public ResponseEntity<ResponseDTO> writePost(){
+
+        System.out.println("컨트롤러 연결");
 
 
         return tool.res("등록 완료", null);
@@ -58,8 +60,8 @@ public class BoardController {
      * 게시글 수정
      * @return
      */
-    @PutMapping("/post")
-    public ResponseEntity<ResponseDTO> modifyBoard(){
+    @PutMapping("/posts/{postCode}")
+    public ResponseEntity<ResponseDTO> modifyPost(){
 
         // 게시글code 받기
 
@@ -73,12 +75,19 @@ public class BoardController {
      * 게시글 삭제
      * @return
      */
-    @DeleteMapping("/post")
-    public ResponseEntity<ResponseDTO> removeBoard(){
+    @DeleteMapping("/posts/{postCode}")
+    public ResponseEntity<ResponseDTO> removePost(){
 
 
         return tool.res("삭제 완료", null);
 
+    }
+
+
+    @GetMapping("/posts/{postCode}")
+    public ResponseEntity<ResponseDTO> showPost(){
+
+        return tool.res("특정 게시글 조회", null);
     }
 
 
