@@ -1,6 +1,7 @@
 package com.yunha.boardproject.board.controller;
 
 
+import com.yunha.boardproject.board.dto.PostDTO;
 import com.yunha.boardproject.board.entity.Post;
 import com.yunha.boardproject.board.service.BoardService;
 import com.yunha.boardproject.common.dto.ResponseDTO;
@@ -46,9 +47,10 @@ public class BoardController {
      * @return
      */
     @PostMapping("/posts")
-    public ResponseEntity<ResponseDTO> writePost(){
+    public ResponseEntity<ResponseDTO> writePost(PostDTO newPost){
 
         System.out.println("컨트롤러 연결");
+//        PostDTO postDTO = boardService.writePost(newPost);
 
 
         return tool.res("등록 완료", null);

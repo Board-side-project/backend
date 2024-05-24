@@ -1,5 +1,6 @@
 package com.yunha.boardproject.board.service;
 
+import com.yunha.boardproject.board.dto.PostDTO;
 import com.yunha.boardproject.board.entity.Post;
 import com.yunha.boardproject.board.repository.BoardRepository;
 import org.springframework.data.domain.Page;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Service;
 public class BoardService {
 
     private final BoardRepository boardRepository;
+
+//    private final ModelMapper modelMapper;
 
     public BoardService(BoardRepository boardRepository) {
         this.boardRepository = boardRepository;
@@ -24,6 +27,15 @@ public class BoardService {
         Page<Post> boardList = boardRepository.findAll(pageable);
 
         return boardList;
-
     }
+
+
+
+//    public PostDTO writePost(PostDTO newPost) {
+//
+////        boardRepository.save(newPost);
+//
+//
+//        return
+//    }
 }
