@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.modelmapper.ModelMapper;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class BoardService {
@@ -17,8 +19,12 @@ public class BoardService {
 
     public BoardService(BoardRepository boardRepository) {
         this.boardRepository = boardRepository;
+
+
     }
 
+
+    @Transactional
     public Page<Post> showBoardList(int page) {
 
         Pageable pageable = PageRequest.of(page, 10);
@@ -30,12 +36,18 @@ public class BoardService {
     }
 
 
+    @Transactional
+    public PostDTO writePost(PostDTO newPost) {
 
-//    public PostDTO writePost(PostDTO newPost) {
+//        boardRepository.save(modelMapper.map(newPost, Post.class));
 //
-////        boardRepository.save(newPost);
-//
-//
-//        return
-//    }
+//        System.out.println("service " + newPost);
+//        return modelMapper.map(newPost, PostDTO.class);
+
+        System.out.println("서비스 등록");
+
+        return newPost;
+
+    }
+
 }

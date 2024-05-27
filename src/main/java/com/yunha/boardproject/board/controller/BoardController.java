@@ -47,11 +47,11 @@ public class BoardController {
      * @return
      */
     @PostMapping("/posts")
-    public ResponseEntity<ResponseDTO> writePost(PostDTO newPost){
+    public ResponseEntity<ResponseDTO> writePost(@ModelAttribute PostDTO newPost){
 
         System.out.println("컨트롤러 연결");
-//        PostDTO postDTO = boardService.writePost(newPost);
-
+        PostDTO postDTO = boardService.writePost(newPost);
+        System.out.println("등록된 게시글 : " + postDTO);
 
         return tool.res("등록 완료", null);
 
@@ -66,7 +66,6 @@ public class BoardController {
     public ResponseEntity<ResponseDTO> modifyPost(){
 
         // 게시글code 받기
-
 
         return tool.res("수정 완료", null);
 
