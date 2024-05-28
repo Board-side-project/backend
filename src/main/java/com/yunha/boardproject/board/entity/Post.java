@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -26,6 +27,7 @@ public class Post {
 
     @Column(name = "post_date")
     private Date postDate;
+
 
     // 작성자 id - join?
 //    @Column(name = "account_id")

@@ -3,24 +3,25 @@ package com.yunha.boardproject.board.service;
 import com.yunha.boardproject.board.dto.PostDTO;
 import com.yunha.boardproject.board.entity.Post;
 import com.yunha.boardproject.board.repository.BoardRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.modelmapper.ModelMapper;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Service
 public class BoardService {
 
     private final BoardRepository boardRepository;
+    private final ModelMapper modelMapper;
 
-//    private final ModelMapper modelMapper;
-
-    public BoardService(BoardRepository boardRepository) {
+    public BoardService(BoardRepository boardRepository, ModelMapper modelMapper) {
         this.boardRepository = boardRepository;
-
-
+        this.modelMapper = modelMapper;
     }
 
 
@@ -39,14 +40,14 @@ public class BoardService {
     @Transactional
     public PostDTO writePost(PostDTO newPost) {
 
-//        boardRepository.save(modelMapper.map(newPost, Post.class));
-//
-//        System.out.println("service " + newPost);
-//        return modelMapper.map(newPost, PostDTO.class);
+        Post writePost = modelMapper.map(newPost, Post.class);
+        writePost.setPostDate(null);
 
-        System.out.println("서비스 등록");
+        System.out.println("service newPost : " + newPost);
+        System.out.println("service writePost : " + newPost);
 
-        return newPost;
+        return modelMapper.map(writePost, PostDTO.class);
+
 
     }
 

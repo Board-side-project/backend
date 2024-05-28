@@ -53,7 +53,7 @@ public class BoardController {
         PostDTO postDTO = boardService.writePost(newPost);
         System.out.println("등록된 게시글 : " + postDTO);
 
-        return tool.res("등록 완료", null);
+        return tool.res("등록 완료", postDTO);
 
     }
 
