@@ -1,0 +1,9 @@
+
+## 게시글 수정
+PUT http://localhost:8080/board/posts/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50SWQiOiJ5dW5oYSIsImFjY291bnRSb2xlIjoiUk9MRV9VU0VSIiwiaWF0IjoxNzE2OTk3OTk5LCJleHAiOjE3MTcwMDAxNTl9.9aK4T5OUzDNPrTGDtIFD7W_XubwxrEW0u2AAQC8THdY
+
+{
+  "postContent": "수정했어요"
+}
+

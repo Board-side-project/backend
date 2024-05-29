@@ -41,14 +41,29 @@ public class BoardService {
     public PostDTO writePost(PostDTO newPost) {
 
         Post writePost = modelMapper.map(newPost, Post.class);
-        writePost.setPostDate(null);
+
+        boardRepository.save(writePost);
 
         System.out.println("service newPost : " + newPost);
-        System.out.println("service writePost : " + newPost);
+        System.out.println("service writePost : " + writePost);
 
         return modelMapper.map(writePost, PostDTO.class);
 
 
     }
 
+
+    @Transactional
+    public PostDTO modifyPost(PostDTO post, Long postCode) {
+
+        Post modifyPost = boardRepository.findById(postCode).orElseThrow();
+
+        modifyPost.setPostTitle(post.getPostTitle());
+        modifyPost.setPostContent(post.getPostContent());
+
+        boardRepository.save(modifyPost);
+
+        return modelMapper.map(modifyPost, PostDTO.class);
+
+    }
 }

@@ -42,6 +42,7 @@ public class BoardController {
     }
 
 
+
     /**
      * 게시글 등록 메소드
      * @return
@@ -51,10 +52,9 @@ public class BoardController {
 
         System.out.println("컨트롤러 연결");
         PostDTO postDTO = boardService.writePost(newPost);
-        System.out.println("등록된 게시글 : " + postDTO);
+        System.out.println("등록할 게시글 : " + newPost);
 
         return tool.res("등록 완료", postDTO);
-
     }
 
 
@@ -63,11 +63,14 @@ public class BoardController {
      * @return
      */
     @PutMapping("/posts/{postCode}")
-    public ResponseEntity<ResponseDTO> modifyPost(){
+    public ResponseEntity<ResponseDTO> modifyPost(@ModelAttribute PostDTO post, @PathVariable Long postCode){
 
-        // 게시글code 받기
+        System.out.println("컨트롤러 연결");
+        System.out.println("post : " + post);
 
-        return tool.res("수정 완료", null);
+        PostDTO modifyPost = boardService.modifyPost(post, postCode);
+
+        return tool.res("수정 완료", modifyPost);
 
     }
 
@@ -77,7 +80,7 @@ public class BoardController {
      * @return
      */
     @DeleteMapping("/posts/{postCode}")
-    public ResponseEntity<ResponseDTO> removePost(){
+    public ResponseEntity<ResponseDTO> removePost(@PathVariable Long postCode){
 
 
         return tool.res("삭제 완료", null);

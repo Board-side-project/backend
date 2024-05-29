@@ -2,16 +2,18 @@ package com.yunha.boardproject.board.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
 @Table(name = "post")
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
+@ToString
 public class Post {
 
     @Id
@@ -27,7 +29,6 @@ public class Post {
 
     @Column(name = "post_date")
     private Date postDate;
-
 
     // 작성자 id - join?
 //    @Column(name = "account_id")
