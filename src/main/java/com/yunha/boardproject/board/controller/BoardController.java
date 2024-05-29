@@ -7,6 +7,7 @@ import com.yunha.boardproject.board.service.BoardService;
 import com.yunha.boardproject.common.dto.ResponseDTO;
 import com.yunha.boardproject.common.response.Tool;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,10 +52,19 @@ public class BoardController {
     public ResponseEntity<ResponseDTO> writePost(@ModelAttribute PostDTO newPost){
 
         System.out.println("컨트롤러 연결");
-        PostDTO postDTO = boardService.writePost(newPost);
-        System.out.println("등록할 게시글 : " + newPost);
 
-        return tool.res("등록 완료", postDTO);
+        try{
+
+            PostDTO postDTO = boardService.writePost(newPost);
+            System.out.println("등록할 게시글 : " + newPost);
+            return tool.res("등록 완료", null);
+
+        }catch (Exception e){
+
+            return tool.resErr(HttpStatus.BAD_REQUEST,"등록 실패");
+
+        }
+
     }
 
 
@@ -82,8 +92,9 @@ public class BoardController {
     @DeleteMapping("/posts/{postCode}")
     public ResponseEntity<ResponseDTO> removePost(@PathVariable Long postCode){
 
+        int result = boardService.removePost(postCode);
 
-        return tool.res("삭제 완료", null);
+        return tool.res("삭제 완료", result);
 
     }
 

@@ -66,4 +66,21 @@ public class BoardService {
         return modelMapper.map(modifyPost, PostDTO.class);
 
     }
+
+
+    @Transactional
+    public int removePost(Long postCode) {
+
+        try{
+            Post removedPost = boardRepository.findById(postCode).orElseThrow();
+            boardRepository.delete(removedPost);
+            return 1;
+        }catch (Exception e){
+            return 0;
+        }
+
+
+    }
+
+
 }

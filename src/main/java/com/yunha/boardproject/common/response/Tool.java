@@ -27,5 +27,8 @@ public class Tool {
     public ResponseEntity<ResponseDTO> res(String msg,Object data){
         return ResponseEntity.ok().body(new ResponseDTO(HttpStatus.OK,msg,data));
     }
+    public ResponseEntity<ResponseDTO> resErr(HttpStatus status, String msg){
+        return ResponseEntity.ok().body(new ResponseDTO(status,msg,null));
+    }
 
 }
