@@ -83,4 +83,17 @@ public class BoardService {
     }
 
 
+    /**
+     * 특정 게시글 조회
+     * @param postCode
+     * @return
+     */
+    @Transactional
+    public PostDTO showPost(Long postCode) {
+
+        Post foundPost = boardRepository.findById(postCode).orElseThrow();
+
+        return modelMapper.map(foundPost, PostDTO.class);
+        
+    }
 }

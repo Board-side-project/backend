@@ -102,6 +102,8 @@ public class BoardController {
     @GetMapping("/posts/{postCode}")
     public ResponseEntity<ResponseDTO> showPost(@PathVariable Long postCode){
 
+        PostDTO postDTO = boardService.showPost(postCode);
+
         return tool.res("특정 게시글 조회", null);
     }
 
