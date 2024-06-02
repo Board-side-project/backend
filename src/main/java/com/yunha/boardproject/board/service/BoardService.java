@@ -94,6 +94,6 @@ public class BoardService {
         Post foundPost = boardRepository.findById(postCode).orElseThrow();
 
         return modelMapper.map(foundPost, PostDTO.class);
-        
+
     }
 }

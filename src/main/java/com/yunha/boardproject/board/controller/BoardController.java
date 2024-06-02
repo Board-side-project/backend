@@ -104,7 +104,7 @@ public class BoardController {
 
         PostDTO postDTO = boardService.showPost(postCode);
 
-        return tool.res("특정 게시글 조회", null);
+        return tool.res("특정 게시글 조회", postDTO);
     }
 
 
