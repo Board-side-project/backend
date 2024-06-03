@@ -31,10 +31,10 @@ public class Post {
     private Date postDate;
 
     // 작성자 id - join?
-//    @Column(name = "account_id")
-//    private String accountId;
+    @JoinColumn(name = "post_writer_id")
+    private Long postWriterId;
 
-    // 게시글 댓글?
+    // 게시글 댓글
 
 
 
