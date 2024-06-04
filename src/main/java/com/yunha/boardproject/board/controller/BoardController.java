@@ -108,4 +108,12 @@ public class BoardController {
     }
 
 
+    @GetMapping("/posts/{accountCode}")
+    public ResponseEntity<ResponseDTO> showUserPosts(@PathVariable Long accountCode){
+
+        
+
+    }
+
+
 }
