@@ -18,4 +18,8 @@ public class PostDTO {
     private String postContent;
 
     private Date postDate;
+
+//    private String accountId;
+
+//    private Long postWriterCode;
 }

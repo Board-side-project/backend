@@ -31,8 +31,8 @@ public class Post {
     private Date postDate;
 
     // 작성자 id - join?
-    @JoinColumn(name = "post_writer_id")
-    private Long postWriterId;
+    @JoinColumn(name = "post_writer_code")
+    private Long postWriterCode;
 
     // 게시글 댓글
 

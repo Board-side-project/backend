@@ -108,10 +108,12 @@ public class BoardController {
     }
 
 
-    @GetMapping("/posts/{accountCode}")
-    public ResponseEntity<ResponseDTO> showUserPosts(@PathVariable Long accountCode){
+    @GetMapping("/posts/writers/{accountCode}")
+    public ResponseEntity<ResponseDTO> showWriterPosts(@RequestParam int page, @PathVariable Long accountCode){
 
-        
+        Page<PostDTO> postDTOs = boardService.showWriterPosts(page, accountCode);
+
+        return tool.res("사용자의 게시글 리스트 조회", postDTOs);
 
     }
 

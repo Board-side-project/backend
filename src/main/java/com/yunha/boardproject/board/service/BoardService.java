@@ -92,8 +92,23 @@ public class BoardService {
     public PostDTO showPost(Long postCode) {
 
         Post foundPost = boardRepository.findById(postCode).orElseThrow();
-
         return modelMapper.map(foundPost, PostDTO.class);
+
+    }
+
+
+    /**
+     * 특정 사용자가 작성한 게시글 페이징 조회
+     * @param accountCode
+     * @return Page<PostDTO>
+     */
+    public Page<PostDTO> showWriterPosts(int page, Long accountCode) {
+
+        Pageable pageable = PageRequest.of(page, 7);
+        Page<Post> writerPosts = boardRepository.findAllByPostWriterCode(accountCode, pageable);
+
+        // 리스트, page객체 등은 데이터들 집합이니까 각각 매핑 필요
+        return writerPosts.map(post -> modelMapper.map(post, PostDTO.class));
 
     }
 }
